@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="NineFilmPlat"
+  id="myeclipse.1212584756000"
+  context-root="/NineFilmPlat"
+  j2ee-spec="5.0"
+  archive="NineFilmPlat.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

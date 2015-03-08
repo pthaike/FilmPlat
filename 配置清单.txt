@@ -1,0 +1,10 @@
+FilmPlatShow：前台管理源代码
+
+NineFilmPlat：后台管理源代码
+
+film.sql：数据库sql源文件
+
+前台：
+    用户名：cd  密码：33
+后台：
+    管理员：admin  密码：123

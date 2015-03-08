@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="FilmPlatShow"
+  id="myeclipse.1405127440437"
+  context-root="/FilmPlatShow"
+  j2ee-spec="5.0"
+  archive="FilmPlatShow.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

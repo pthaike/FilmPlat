@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="movie.com" extends="struts-default">
+		<result-types>
+			<result-type name="ValidateImage" class="scu.edu.cn.action.ImageResult" />
+		</result-types>
+		<action name="loginAction" class="scu.edu.cn.action.LoginAction"
+			method="checkUserInfo">
+			<result name="ok">/index.jsp</result>
+			<result name="error" type="redirectAction">loginErrorAction.action</result>
+		</action>
+		<action name="loginErrorAction" class="scu.edu.cn.action.LoginAction"
+			method="getErrorMsg">
+			<result name="ok">/vip_login.jsp</result>
+		</action>
+		<action name="registAction" class="scu.edu.cn.action.UserInfoAction"
+			method="saveUser">
+			<result name="ok">/index.jsp</result>
+		</action>
+		<action name="QueryUserInfoAction" class="scu.edu.cn.action.UserInfoAction"
+			method="getUserInfoByCondition">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="updataUserInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="modifyUser">
+			<result name="ok">/VIP_InfoModify.jsp</result>
+		</action>
+		<action name="saveModifyUser" class="scu.edu.cn.action.UserInfoAction"
+			method="saveModify">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="deleteUserInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="deleteUserInfo">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="addVipAction" class="scu.edu.cn.action.UserInfoAction"
+			method="saveUser">
+			<result name="ok" type="redirectAction">updateUserList.action</result>
+		</action>
+		<action name="updateUserList" class="scu.edu.cn.action.UserInfoAction"
+			method="reGetUserList">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="MNGloginAction" class="scu.edu.cn.action.MngLoginAction"
+			method="checkMngInfo">
+			<result name="ok" type="redirectAction">updateUserList.action</result>
+			<result name="error" type="redirectAction">MNGloginErrorAction.action</result>
+		</action>
+		<action name="MNGloginErrorAction" class="scu.edu.cn.action.LoginAction"
+			method="getErrorMsg">
+			<result name="ok">/manager_login.jsp</result>
+		</action>
+		<action name="visitPersonalPage" class="scu.edu.cn.action.UserInfoAction"
+			method="getUserInfoByMySession">
+			<result name="ok">vip_personalPage.jsp</result>
+		</action>
+		<action name="saveModifyPersonalInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="saveModify">
+			<result name="ok" type="redirectAction">visitPersonalPage.action</result>
+		</action>
+		<action name="sendMail" class="scu.edu.cn.action.Mail" method="execute">
+			<result name="ok">/sendMailOk.jsp</result>
+			<result name="error">/sendMailError.jsp</result>
+			<result name="CheckCodeError">/CheckCodeError.jsp</result>
+		</action>
+		<action name="ValidateImage" class="scu.edu.cn.action.ImageAction"
+			method="doDefault">
+			<result name="image" type="ValidateImage" />
+		</action>
+		<action name="movie_list" class="scu.edu.cn.action.MovieInfoAction"
+			method="quarryNewsAndMovieInfo">
+			<result name="ok">/FrontPage.jsp</result>
+		</action>
+		<action name="movieShow" class="scu.edu.cn.action.MovieInfoAction"
+			method="quarryMovieInfo">
+			<result name="ok">/movieShow.jsp</result>
+		</action>
+		<action name="newsShow" class="scu.edu.cn.action.MovieInfoAction"
+			method="quarryMovieCityAndNewsInfo">
+			<result name="ok">/newsShow.jsp</result>
+		</action>
+		<action name="quarynewsID" class="scu.edu.cn.action.MovieInfoAction"
+			method="quaryNewsAndViewBynewsId">
+			<result name="ok">/newDetailShow.jsp</result>
+		</action>
+		<action name="quarymovieCityId" class="scu.edu.cn.action.MovieInfoAction"
+			method="quarryMovieCityInfoById">
+			<result name="ok">/movieCityDetailShow.jsp</result>
+		</action>
+		<action name="quaryMovieDetail" class="scu.edu.cn.action.MovieInfoAction"
+			method="quaryMovieInfoAndViewByMovieId">
+			<result name="ok">/movieDetailShow.jsp</result>
+		</action>
+		<action name="addNewsView" class="scu.edu.cn.action.MovieInfoAction"
+			method="addNewsView">
+			<result name="ok" type="redirectAction">newsShow.action</result>
+			<result name="error">/NotLoginError.jsp</result>
+		</action>
+		<action name="addMovieView" class="scu.edu.cn.action.MovieInfoAction"
+			method="addMovieView">
+			<result name="ok" type="redirectAction">movieShow.action</result>
+			<result name="error">/NotLoginError.jsp</result>
+		</action>
+		<action name="liuyanAction" class="scu.edu.cn.action.MessageAction"
+			method="addMessage">
+			<result name="addmessage">/index.jsp</result>
+			<result name="error">/NotLoginError.jsp</result>
+		</action>
+	</package>
+</struts>    

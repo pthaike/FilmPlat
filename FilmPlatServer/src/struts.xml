@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<!--<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	--><package name="scu.edu.cn" extends="struts-default">
+		<result-types>
+			<result-type name="ValidateImage" class="scu.edu.cn.action.ImageResult" />
+		</result-types>
+		<action name="ManagerLogin" class="scu.edu.cn.action.ManagerInfoAction" method="VeridateManager">
+			<result name="mloginOk" type="redirectAction">QueryArticleInfoAction.action</result>
+			<result name="error">/mlogin.jsp</result>
+		</action>
+		<action name="QueryArticleInfoAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="getArticleInfoByCondition">
+		<result name="query">/masterart.jsp</result>
+		</action>
+		<action name="LoadArticleInfoAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="loadArticleInfo">
+		<result name="load">/modifyArticle.jsp</result>
+		</action>
+		<action name="UpdateArticleInfoAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="updateArticleInfo">
+		<result name="update" type="redirectAction">QueryArticleInfoAction</result>
+		</action>
+		<action name="AddArticleAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="addArticleInfo">
+		<result name="add" type="redirectAction">QueryArticleInfoAction</result>
+		</action>
+		<action name="DeleteArticleInfoAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="deleteArticle">
+		<result name="delete" type="redirectAction">QueryArticleInfoAction.action</result>
+		</action>
+		<action name="CommentAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="LoadArticleAndCom">
+		<result name="load">/mcomment.jsp</result>
+		</action>
+		<action name="DeleteComentAction" class="scu.edu.cn.action.ManagerArticleInfoAction" method="deleteComment">
+		<result name="delete">/mcomment.jsp</result>
+		</action>
+		<action name="QueryMsgAction" class="scu.edu.cn.action.ManagerMsgAction" method="queryMsg">
+		<result name="query">/mastermsg.jsp</result>
+		</action>
+		<action name="DeleteMsgInfoAction" class="scu.edu.cn.action.ManagerMsgAction" method="deleteMsg">
+		<result name="deletemsg" type="redirectAction">/QueryMsgAction.action</result>
+		</action>
+		<action name="ReplyAction" class="scu.edu.cn.action.ManagerMsgAction" method="replyMsg">
+		<result name="replymsg">/replymsg.jsp</result>
+		</action>
+		<action name="AddReplyAction" class="scu.edu.cn.action.ManagerMsgAction" method="addReply">
+		<result name="addreply" type="redirectAction">QueryMsgAction.action</result>
+		</action>
+		<action name="EditReplyAction" class="scu.edu.cn.action.ManagerMsgAction" method="editReply">
+		<result name="editreply">/editReply.jsp</result>
+		</action>
+		<action name="UpdReplyAction" class="scu.edu.cn.action.ManagerMsgAction" method="updateReply">
+		<result name="updatereply" type="redirectAction">QueryMsgAction.action</result>
+		</action>
+		<action name="DelReplyAction" class="scu.edu.cn.action.ManagerMsgAction" method="deleteReply">
+		<result name="delreply" type="redirectAction">QueryMsgAction.action</result>
+		</action>
+		
+		<!-- start of 侯雲峰-->
+		 <!--影片管理
+       -->
+       <action name="SaveFilmInfoAction" class="scu.edu.cn.action.ScuFilmInfoAction"
+          method="SaveFilm">
+          <result name="ok" type="redirectAction">QueryFilmInfoAction.action</result> 
+       </action>
+       <action name="QueryFilmInfoAction" class="scu.edu.cn.action.ScuFilmInfoAction"
+          method="getFilmInfoByCondition">
+          <result name="query">/filmList.jsp</result> 
+       </action>
+       <action name="ModifyMovieInfo" class="scu.edu.cn.action.ScuFilmInfoAction"
+			method="modifyMovie">
+			<result name="ok">/movieModify.jsp</result>
+	   </action>
+	   <action name="DeleteMovieInfo" class="scu.edu.cn.action.ScuFilmInfoAction"
+			method="deleteMovie">
+			<result name="ok" type="redirectAction">QueryFilmInfoAction.action</result> 
+	   </action>
+	   <action name="SaveModifyMovieInfo" class="scu.edu.cn.action.ScuFilmInfoAction"
+			method="modifySaveMovie">
+			<result name="ok" type="redirectAction">QueryFilmInfoAction.action</result> 
+	   </action>
+	   <!--评论管理
+	   -->
+	   <action name="QueryCommentInfoAction" class="scu.edu.cn.action.CommentInfoAction"
+          method="getCommentInfoByCondition">
+          <result name="query">/commentList.jsp</result> 
+       </action>
+       <!--？？？？？？？？？？？？？？？？？？？？？<action name="ShieldCommentInfo" class="scu.edu.cn.action.CommentInfoAction"
+			method="shieldComment">
+			<result name="ok"></result>
+	   </action>-->
+	   <action name="DeleteCommentInfo" class="scu.edu.cn.action.CommentInfoAction"
+			method="deleteComment">
+			<result name="ok" type="redirectAction">QueryCommentInfoAction.action</result> 
+	   </action>
+	   
+	   <!--
+	                        排片管理
+           -->
+           
+       <action name="SelectBeforeAddArrange" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+          method="getMovieCityHallInfoByCondition">
+          <result name="query">/arrangemovieInfo.jsp</result> 
+       </action>
+       
+         <action name="SaveMovieArrangeInfoAction" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+          method="SaveMovieArrange">
+          <result name="ok" type="redirectAction">QueryMovieArrangeInfoAction.action</result> 
+       </action>
+         
+         
+        <action name="QueryMovieArrangeInfoAction" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+          method="getMovieArrangeInfoByCondition">  
+          <result name="query">/movieArrangeList.jsp</result> 
+       </action>
+       
+       
+       <action name="ModifyArrangeInfo" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+			method="modifyArrange">
+			<result name="ok">/arrangeModify.jsp</result>
+	   </action>
+	   
+	   
+        <action name="SaveArrangeMovieInfo" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+			method="modifySaveArrange">
+			<result name="ok" type="redirectAction">QueryMovieArrangeInfoAction.action</result> 
+	   </action>
+	   
+	   
+       <action name="DeleteArrangeInfo" class="scu.edu.cn.action.ArrangeMovieInfoAction"
+			method="deleteArrange">
+			<result name="ok" type="redirectAction">QueryMovieArrangeInfoAction.action</result> 
+	   </action>
+	   <!-- end of houyunfeng -->
+	   
+	   
+	   
+	   <!-- start of 程泽洲 -->
+	   
+		<!--<action name="loginAction" class="scu.edu.cn.action.LoginAction"
+			method="checkUserInfo">
+			<result name="ok">/mainPage.jsp</result>
+			<result name="error" type="redirectAction">loginErrorAction.action</result>
+		</action>
+		<action name="loginErrorAction" class="scu.edu.cn.action.LoginAction"
+			method="getErrorMsg">
+			<result name="ok">/vip_login.jsp</result>
+		</action>
+		<action name="registAction" class="scu.edu.cn.action.UserInfoAction"
+			method="saveUser">
+			<result name="ok">/mainPage.jsp</result>
+		</action>
+		-->
+		
+		<action name="QueryUserInfoAction" class="scu.edu.cn.action.UserInfoAction"
+			method="getUserInfoByCondition">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="updataUserInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="modifyUser">
+			<result name="ok">/VIP_InfoModify.jsp</result>
+		</action>
+		<action name="saveModifyUser" class="scu.edu.cn.action.UserInfoAction"
+			method="saveModify">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="deleteUserInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="deleteUserInfo">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<action name="addVipAction" class="scu.edu.cn.action.UserInfoAction"
+			method="saveUser">
+			<result name="ok" type="redirectAction">updateUserList.action</result>
+		</action>
+		<action name="updateUserList" class="scu.edu.cn.action.UserInfoAction"
+			method="reGetUserList">
+			<result name="ok">/manager_vip_management.jsp</result>
+		</action>
+		<!--<action name="MNGloginAction" class="scu.edu.cn.action.MngLoginAction"
+			method="checkMngInfo">
+			<result name="ok" type="redirectAction">updateUserList.action</result>
+			<result name="error" type="redirectAction">MNGloginErrorAction.action</result>
+		</action>
+		<action name="MNGloginErrorAction" class="scu.edu.cn.action.LoginAction"
+			method="getErrorMsg">
+			<result name="ok">/manager_login.jsp</result>
+		</action>
+		
+		<action name="visitPersonalPage" class="scu.edu.cn.action.UserInfoAction"
+			method="getUserInfoByMySession">
+			<result name="ok">vip_personalPage.jsp</result>
+		</action>
+		<action name="saveModifyPersonalInfo" class="scu.edu.cn.action.UserInfoAction"
+			method="saveModify">
+			<result name="ok" type="redirectAction">visitPersonalPage.action</result>
+		</action>
+		<action name="sendMail" class="scu.edu.cn.action.Mail" method="execute">
+			<result name="ok">/sendMailOk.jsp</result>
+			<result name="error">/sendMailError.jsp</result>
+			<result name="CheckCodeError">/CheckCodeError.jsp</result>
+		</action>
+		<action name="ValidateImage" class="scu.edu.cn.action.ImageAction"
+			method="doDefault">
+			<result name="image" type="ValidateImage" />
+		</action>
+		-->
+	   <!-- end of chenzezhou -->
+	   
+	   
+	   
+	   <!--start of 李俊男 -->
+	   <action name="QueryMovieCityInfoAction" class="scu.edu.cn.action.MovieCityInfoAction"
+			method="getMovieCityInfoByCondition">
+			<result name="query">/movieCity.jsp</result>
+		</action>
+		<action name="SaveMovieCityInfoAction" class="scu.edu.cn.action.MovieCityInfoAction"
+			method="saveMovieCity">
+			<result name="ok" type="redirectAction">QueryMovieCityInfoAction.action
+			</result>
+		</action>
+		<action name="updateMovieCityInfo" class="scu.edu.cn.action.MovieCityInfoAction"
+			method="modifyMovieCity">
+			<result name="ok">/movieCityModify.jsp</result>
+		</action>
+		<action name="deleteMovieCityInfo" class="scu.edu.cn.action.MovieCityInfoAction"
+			method="deleteMovieCity">
+			<result name="delete" type="redirectAction">QueryMovieCityInfoAction.action
+			</result>
+		</action>
+		<action name="SaveModifyMovieCityInfo" class="scu.edu.cn.action.MovieCityInfoAction"
+			method="modifySaveMovieCity">
+			<result name="ok" type="redirectAction">QueryMovieCityInfoAction.action
+			</result>
+		</action>
+		
+		<!--影厅管理-->
+		<action name="QueryMovieHallInfoAction" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="getMovieHallInfoByCondition">
+			<result name="query">/movieHall.jsp</result>
+		</action>
+		<action name="TurnToAddHall" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="TurnToAddHall">
+			<result name="to">/movieHallAdd.jsp</result>
+		</action>
+		<action name="SaveMovieHallInfoAction" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="saveMovieHall">
+			<result name="ok" type="redirectAction">QueryMovieHallInfoAction.action
+			</result>
+		</action>
+		<action name="updateMovieHallInfo" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="modifyMovieHall">
+			<result name="ok">/movieHallModify.jsp</result>
+		</action>
+		<action name="SaveModifyMovieHallInfoAction" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="modifySaveMovieHall">
+			<result name="ok" type="redirectAction">QueryMovieHallInfoAction.action
+			</result>
+		</action>
+		<action name="deleteMovieHallInfo" class="scu.edu.cn.action.MovieHallInfoAction"
+			method="deleteMovieHall">
+			<result name="delete" type="redirectAction">QueryMovieHallInfoAction.action
+			</result>
+		</action>
+		
+	   <!-- end of lijunnan -->
+	   
+	   
+	   
+	</package>
+
+</struts>    
